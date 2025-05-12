@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>태양에너지 | Sun Energy</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header, nav, section, footer {
+      display: block;
+    }
+    header {
+      background: #f9b233;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a, nav button {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    nav a:hover, nav button:hover {
+      background: #555;
+    }
+    section {
+      padding: 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    .gallery-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .gallery-item {
+      width: calc(20% - 1rem);
+      min-width: 180px;
+    }
+    .gallery-item img {
+      object-fit: contain;
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-item img {
+      object-fit: contain;
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin-bottom: 0.5rem;
+    }
+    .gallery-item p {
+      margin: 0;
+      padding: 0.5rem;
+      background: #f0f0f0;
+      border-radius: 4px;
+    }
+    .delete-btn {
+      background: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      float: right;
+    }
+    .board-section {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    .board-post {
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .lang-en .ko { display: none; }
+    .lang-en .en { display: block; }
+    .en { display: none; }
+  
+.hidden { display: none; }
+.admin-visible #admin-panel { display: block; }
+
+.image-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.image-caption p {
+  flex-grow: 1;
+  margin: 0;
+  background: #f0f0f0;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav a, nav button {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+  }
+
+  .gallery-item {
+    width: 100% !important;
+    min-width: unset;
+  }
+
+  .image-caption {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .image-caption button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  input[type="text"], textarea {
+    font-size: 16px;
+  }
+
+  header h1, header p {
+    font-size: 1.2rem;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="ko" contenteditable="false">태양에너지</h1>
+  <h1 class="en" contenteditable="false">Sun Energy</h1>
+  <p class="ko" contenteditable="false">당신의 지붕 위에 지속 가능한 미래를 설계합니다</p>
+  <p class="en" contenteditable="false">Building a sustainable future on your rooftop</p>
+</header>
+
+<nav>
+  <a href="#about" class="ko">회사소개</a>
+  <a href="#about" class="en">About</a>
+  <a href="#services" class="ko">서비스</a>
+  <a href="#services" class="en">Services</a>
+  <a href="#projects" class="ko">프로젝트</a>
+  <a href="#projects" class="en">Projects</a>
+  <a href="#board" class="ko">게시판</a>
+  <a href="#board" class="en">Free Board</a>
+  <a href="#inquiry" class="ko">상담 및 견적</a>
+  <a href="#inquiry" class="en">Inquiry</a>
+</nav>
+
+<div style="text-align:right; padding: 0.5rem 1rem;">
+  <button onclick="setLanguage('ko')">한국어</button>
+  <button onclick="setLanguage('en')">ENGLISH</button>
+</div>
+
+
+<section id="about">
+  <h2 class="ko" contenteditable="false">회사소개</h2>
+  <h2 class="en" contenteditable="false">About</h2>
+  <p class="ko"  contenteditable="false">태양에너지는 주거용 및 상업용 태양광 시스템 설치를 전문으로 하며, 청정 에너지로 지속 가능한 미래를 만들어가고 있습니다.</p>
+  <p class="en"  contenteditable="false">Sun Energy specializes in residential and commercial solar power installations for a cleaner tomorrow.</p>
+</section>
+
+<section id="services">
+  <h2 class="ko" contenteditable="false">서비스</h2>
+  <h2 class="en" contenteditable="false">Services</h2>
+  <ul>
+    <li class="ko"  contenteditable="false">🏠 주거용 태양광 시스템 설치</li>
+    <li class="en"  contenteditable="false">🏠 Residential Solar Installation</li>
+    <li class="ko"  contenteditable="false">🏢 상업용 태양광 시스템 설치</li>
+    <li class="en"  contenteditable="false">🏢 Commercial Solar Installation</li>
+    <li class="ko"  contenteditable="false">🔧 유지보수 및 모니터링 서비스</li>
+    <li class="en"  contenteditable="false">🔧 Maintenance & Monitoring</li>
+<li class="ko"  contenteditable="false">💡 에너지 효율 컨설팅</li>
+<li class="ko"  contenteditable="false">🌐 스마트 계측기 설치</li>
+<li class="ko"  contenteditable="false">📊 전력 생산 분석 리포트 제공</li>
+<li class="en"  contenteditable="false">💡 Energy Efficiency Consulting</li>
+<li class="en"  contenteditable="false">🌐 Smart Meter Installation</li>
+<li class="en"  contenteditable="false">📊 Power Generation Report</li>
+
+  </ul>
+</section>
+
+<section id="projects" class="board-section">
+  <h2 class="ko" contenteditable="false">프로젝트 사례</h2>
+  <h2 class="en" contenteditable="false">Projects</h2>
+  <div class="drop-zone" id="dropZone">이미지를 여기에 드래그하거나 클릭하여 추가하세요</div>
+  <input type="file" id="imageFileInput" accept="image/*" multiple style="display:none;" />
+  <div class="gallery-wrapper" id="projectGallery" contenteditable="false"></div></div>
+</section>
+
+<section id="board" class="board-section">
+  <h2 class="ko" contenteditable="false">자유게시판</h2>
+  <h2 class="en" contenteditable="false">Free Board</h2>
+  <div id="post-list" contenteditable="false"></div>
+  <form onsubmit="event.preventDefault(); addPost()">
+    <input type="text" id="post-name" placeholder="이름 / Name" required /><br />
+    <textarea id="post-content" rows="3" placeholder="내용 / Message" required></textarea><br />
+    <button type="submit">게시하기 / Post</button>
+  </form>
+</section>
+
+<section id="inquiry" class="board-section">
+  <h2 class="ko" contenteditable="false">상담 및 견적 요청</h2>
+  <h2 class="en" contenteditable="false">Inquiry</h2>
+  <div id="inquiry-list" contenteditable="false"></div>
+  <form onsubmit="event.preventDefault(); addInquiry()">
+    <input type="text" id="inquiry-name" placeholder="이름 / Name" required /><br />
+    <textarea id="inquiry-content" rows="3" placeholder="문의 내용 / Inquiry" required></textarea><br />
+    <button type="submit">등록 / Submit</button>
+  </form>
+</section>
+
+<footer>
+  <p class="ko" contenteditable="false">&copy; 2025 태양에너지 | 모두의 미래를 위한 청정 에너지</p>
+  <p class="en" contenteditable="false">&copy; 2025 Sun Energy | Clean Energy for a Better Tomorrow</p>
+
+<div style="text-align: center; color: #ccc; font-size: 14px; margin-top: 10px;"  contenteditable="false">
+  📞 전화: 010-9610-9444<br />
+  ✉️ 이메일: info@sunenergy.co.kr<br />
+  📍 주소: 서울특별시 중구 태양로 123
+</div>
+</footer>
+
+
+<section id="admin" class="board-section">
+  <h3>🔒 관리자 모드</h3>
+  <input type="password" id="adminPass" placeholder="관리자 비밀번호" />
+  <button onclick="activateAdmin()">수정 활성화</button>
+  <button onclick="deactivateAdmin()">수정 비활성화</button>
+</section>
+
+
+
+
+
+<!-- Lightbox Modal -->
+<div id="imgModal" style="display:none; position:fixed; top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.8);z-index:9999;align-items:center;justify-content:center;" contenteditable="false">
+  <img id="modalImg" src="" style="max-width:90%;max-height:90%;box-shadow:0 0 20px #fff;border-radius:10px;" />
+</div>
+
+
+<script>
+let adminMode = false;
+
+function setLanguage(lang) {
+  if (lang === 'ko') {
+    document.body.classList.remove('lang-en');
+  } else {
+    document.body.classList.add('lang-en');
+  }
+}
+
+function activateAdmin() {
+  const pwInput = document.getElementById('adminPass');
+  const pw = pwInput.value;
+  if (btoa(pw) === 'MTIyNQ==') {
+    adminMode = true;
+    document.querySelectorAll('[contenteditable]').forEach(el => el.contentEditable = true);
+    document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'inline-block');
+    alert('관리자 모드가 활성화되었습니다.');
+  } else {
+    alert('비밀번호가 틀렸습니다.');
+  }
+  pwInput.value = '';
+}
+
+function deactivateAdmin() {
+  adminMode = false;
+  document.querySelectorAll('[contenteditable]').forEach(el => el.contentEditable = false);
+  document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'none');
+  alert('관리자 모드가 비활성화되었습니다.');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[contenteditable]').forEach(el => el.contentEditable = false);
+  document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'none');
+
+  const dropZone = document.getElementById('dropZone');
+  const imageInput = document.getElementById('imageFileInput');
+
+  if (dropZone && imageInput) {
+    dropZone.addEventListener('click', () => {
+      if (adminMode) {
+        imageInput.click();
+      } else {
+        alert("이미지 추가는 관리자만 가능합니다.");
+      }
+    });
+
+    imageInput.addEventListener('change', (e) => {
+      if (adminMode && e.target.files.length > 0) {
+        [...e.target.files].forEach(file => handleImage(file));
+      } else if (!adminMode) {
+        alert("이미지를 추가하려면 관리자 모드를 활성화해야 합니다.");
+      }
+    });
+  }
+});
+
+function handleImage(file) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const container = document.createElement('div');
+    container.className = 'gallery-item';
+    const editableAttr = adminMode ? 'contenteditable="true"' : 'contenteditable="false"';
+    container.innerHTML = `
+      <img src="${e.target.result}" alt="업로드 이미지" />
+      <div class="image-caption">
+        <p ${editableAttr}>설명을 입력하세요</p>
+        <button class="delete-btn" style="display:${adminMode ? 'inline-block' : 'none'};" onclick="this.closest('.gallery-item').remove()">삭제</button>
+      </div>
+    `;
+    
+    const galleryWrapper = document.getElementById('projectGallery');
+    let lastGroup = galleryWrapper.lastElementChild;
+    if (!lastGroup || lastGroup.childElementCount >= 5) {
+      lastGroup = document.createElement('div');
+      lastGroup.className = 'gallery';
+      galleryWrapper.appendChild(lastGroup);
+    }
+    lastGroup.appendChild(container);
+  };
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
