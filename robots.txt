@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://david71-forever.github.io/teayangenergy/sitemap.xml
